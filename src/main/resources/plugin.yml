@@ -1,0 +1,6 @@
+name: PixelDungeons
+version: '1.0'
+main: mike.pixelDungeons.PixelDungeons
+api-version: '1.20'
+depend:
+  - SupervisorHub
