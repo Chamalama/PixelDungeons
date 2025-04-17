@@ -11,21 +11,26 @@ import org.jetbrains.annotations.NotNull;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class TeamDungeonCompleteEvent extends Event implements Cancellable {
 
     public static HandlerList HANDLER_LIST = new HandlerList();
 
-    private DungeonTeamWrapper dungeonTeamWrapper;
+    private final DungeonTeamWrapper dungeonTeamWrapper;
+
+    private boolean isCancelled = false;
+
+    public TeamDungeonCompleteEvent(DungeonTeamWrapper dungeonTeamWrapper) {
+        this.dungeonTeamWrapper = dungeonTeamWrapper;
+    }
 
     @Override
     public boolean isCancelled() {
-        return false;
+        return isCancelled;
     }
 
     @Override
     public void setCancelled(boolean b) {
-
+        this.isCancelled = b;
     }
 
     public static HandlerList getHandlerList() {

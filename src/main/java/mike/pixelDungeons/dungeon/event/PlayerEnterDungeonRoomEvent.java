@@ -13,22 +13,28 @@ import org.jetbrains.annotations.NotNull;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class PlayerEnterDungeonRoomEvent extends Event implements Cancellable {
 
     public static HandlerList HANDLER_LIST = new HandlerList();
 
-    private Player player;
-    private DungeonRoom dungeonRoom;
+    private final Player player;
+    private final DungeonRoom dungeonRoom;
+
+    private boolean isCancelled = false;
+
+    public PlayerEnterDungeonRoomEvent(Player player, DungeonRoom dungeonRoom) {
+        this.player = player;
+        this.dungeonRoom = dungeonRoom;
+    }
 
     @Override
     public boolean isCancelled() {
-        return false;
+        return isCancelled;
     }
 
     @Override
     public void setCancelled(boolean b) {
-
+        this.isCancelled = b;
     }
 
     public static HandlerList getHandlerList() {
