@@ -41,7 +41,7 @@ public class DungeonListener implements Listener {
 
         dungeonTeamWrapper.getTeamPlayers().forEach(teamPlayer -> {
             if(teamPlayer == player) return;
-            teamPlayer.teleport(event.getDungeon().getDungeonWrapper().getDungeonSpawnLocation().toCenterLocation(), PlayerTeleportEvent.TeleportCause.CHORUS_FRUIT);
+            teamPlayer.teleport(event.getDungeon().getDungeonWrapper().getDungeonSpawnLocation().toBukkit().toCenterLocation(), PlayerTeleportEvent.TeleportCause.CHORUS_FRUIT);
         });
 
         final Dungeon dungeon = event.getDungeon();

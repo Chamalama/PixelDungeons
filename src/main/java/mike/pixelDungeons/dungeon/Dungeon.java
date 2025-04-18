@@ -2,6 +2,7 @@ package mike.pixelDungeons.dungeon;
 
 import lombok.Getter;
 import lombok.Setter;
+import mike.mLibrary.config.MConfig;
 import mike.pixelDungeons.PixelDungeons;
 import mike.pixelDungeons.dungeon.event.PlayerEnterDungeonEvent;
 import mike.pixelDungeons.wrapper.DungeonPlayerWrapper;
@@ -15,12 +16,16 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public abstract class Dungeon implements Listener {
+public abstract class Dungeon extends MConfig<DungeonWrapper> implements Listener {
 
     protected DungeonWrapper dungeonWrapper;
 
-    public Dungeon() {
-        this.dungeonWrapper = null;
+    public Dungeon(DungeonWrapper dungeonWrapper) {
+        super(PixelDungeons.get(), dungeonWrapper.getDungeonName(), dungeonWrapper.getDungeonName(), new DungeonWrapper(dungeonWrapper.getDungeonName()));
+        this.dungeonWrapper = dungeonWrapper;
+        this.dungeonWrapper.setDungeonSpawnLocation(this.getOrLoad(false).getDungeonSpawnLocation());
+        this.dungeonWrapper.setLore(this.getOrLoad(false).getLore());
+        this.dungeonWrapper.setEndLore(this.getOrLoad(false).getEndLore());
     }
 
     public void initializeDungeonTeam(DungeonTeamWrapper dungeonTeamWrapper) {

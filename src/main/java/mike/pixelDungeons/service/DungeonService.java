@@ -34,6 +34,10 @@ public class DungeonService {
         return getDungeon(player.getWorld().getName().replace("_", " ").toLowerCase());
     }
 
+    public Collection<Dungeon> getAll() {
+        return keyToDungeon.values();
+    }
+
 
 
 }

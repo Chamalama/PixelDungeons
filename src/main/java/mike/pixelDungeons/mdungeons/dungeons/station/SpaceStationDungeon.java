@@ -13,30 +13,16 @@ public class SpaceStationDungeon extends Dungeon {
 
     private World world = Bukkit.getWorld("Space_Station");
 
+    //Will be removed
     @Getter
     public static Set<UUID> stationDisplays = new HashSet<>();
 
     public SpaceStationDungeon() {
-        this.dungeonWrapper = new DungeonWrapper(
-                "Space Station",
-                new Location(world, 0, 164.5, 0).toCenterLocation(),
-                new HashMap<>(),
-                new LinkedList<>() {{
-                    add(new AirlockRoom());
-                }},
-                List.of(
-                        "Once a deep space research hub, Station Aegis fell",
-                        "silent after a Rift experiment went wrong.",
-                        "Now it drifts in orbit",
-                        "overrun by alien horrors from beyond."
-                ),
-                List.of(
-                        "Station Aegis has been secured",
-                        "unfortunately many researchers have been lost",
-                        "but there was no way for us to know this would happen.",
-                        "Good job on this mission."
-                )
-        );
+        super(new DungeonWrapper("Space Station"));
+
+        this.dungeonWrapper.setDungeonRooms(new LinkedList<>(){{
+            add(new AirlockRoom());
+        }});
 
         spawnHolograms();
 

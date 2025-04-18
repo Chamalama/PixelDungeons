@@ -79,7 +79,7 @@ public class AvailableDungeonGUI extends BaseGUI {
 
         if(dungeon == null) return;
 
-        player.teleport(dungeon.getDungeonWrapper().getDungeonSpawnLocation().toCenterLocation());
+        player.teleport(dungeon.getDungeonWrapper().getDungeonSpawnLocation().toBukkit().toCenterLocation());
 
     }
 
